@@ -53,7 +53,7 @@ module.exports = function(schema, options) {
           path.validate(
             function() {
               return new Promise(resolve => {
-                const isSubdocument = isFunc(this.ownerDocument);
+                const isSubdocument = isFunc(this.ownerDocument) && this.ownerDocument() !== this;
                 const isQuery = this.constructor.name === "Query";
                 const parentDoc = isSubdocument ? this.ownerDocument() : this;
                 const isNew = typeof parentDoc.isNew === "boolean" ? parentDoc.isNew : !isQuery;
