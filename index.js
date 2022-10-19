@@ -71,9 +71,12 @@ module.exports = function(schema, options) {
 
                   // Wrap with case-insensitivity
                   if (get(path, "options.uniqueCaseInsensitive") || indexOptions.uniqueCaseInsensitive) {
-                    // Escape RegExp chars
-                    pathValue = pathValue.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
-                    pathValue = new RegExp("^" + pathValue + "$", "i");
+                    //no escapar si es un arreglo
+                    if(!Array.isArray(pathValue)){
+                      // Escape RegExp chars
+                      pathValue = pathValue.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+                      pathValue = new RegExp("^" + pathValue + "$", "i");
+                    }
                   }
 
                   conditions[name] = pathValue;
