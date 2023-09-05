@@ -73,7 +73,7 @@ module.exports = function (schema, options) {
                   //no escapar si es un arreglo
                   if (!Array.isArray(pathValue)) {
                     // Escape RegExp chars
-                    pathValue = pathValue.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+                    pathValue = pathValue.replace(/[-[]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
                     pathValue = new RegExp("^" + pathValue + "$", "i");
                   }
                 }
@@ -92,7 +92,7 @@ module.exports = function (schema, options) {
                   conditions._id = {$ne: this._id};
                 } else {
                   // if is not new and is not query and the pathName is _id then is the same document no need to check anything
-                  return resolve(true);
+                  return true;
                 }
               }
 
