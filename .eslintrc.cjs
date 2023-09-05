@@ -5,7 +5,7 @@ module.exports = {
     es2022: true
   },
   plugins: ["prettier"],
-  extends: ["plugin:prettier/recommended"],
+  extends: ["eslint:recommended"],
   rules: {
     "no-console": 0,
     "max-len": [
