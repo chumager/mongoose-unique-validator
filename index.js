@@ -57,7 +57,7 @@ module.exports = function (schema, options) {
               const parentDoc = isSubdocument ? this.ownerDocument() : this;
               const isNew = typeof parentDoc.isNew === "boolean" ? parentDoc.isNew : !isQuery;
 
-              const conditions = {};
+              let conditions = {};
               each(paths, name => {
                 let pathValue;
 
