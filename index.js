@@ -41,9 +41,10 @@ module.exports = function (schema, options) {
 
     if (indexOptions.unique) {
       const paths = Object.keys(index[0]);
+      //FIX cambiar este each por un forEach
       each(paths, pathName => {
         // Choose error message
-        const pathMessage = typeof indexOptions.unique === "string" ? indexOptions.unique : message;
+        const pathMessage = typeof indexOptions.uniqueMessage === "string" ? indexOptions.uniqueMessage : message;
 
         // Obtain the correct path object
         const path = deepPath(schema, pathName) || schema.path(pathName);
