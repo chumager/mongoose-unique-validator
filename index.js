@@ -116,7 +116,7 @@ module.exports = function (schema, options) {
               if (model.baseModelName && indexOptions.partialFilterExpression === null) {
                 model = model.db.model(model.baseModelName);
               }
-              conditions = {...indexOptions.partialFilterExpression, ...conditions};
+              conditions = {$and: [conditions, indexOptions.partialFilterExpression || {}]};
 
               const count = await model.find(conditions).countDocuments();
               return count === 0;
